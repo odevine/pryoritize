@@ -34,4 +34,9 @@
     $stmt->execute($data);
   }
 
+  function getItemHTML($item) {
+    $title = $item['title'];
+    echo '<h2><?=$title?></h2>';
+  }
+
 ?>

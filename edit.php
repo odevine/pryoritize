@@ -18,18 +18,13 @@
   $auth_user->closeConnection();
 
   if(isset($_POST['submit'])) {
-    print_r($_SESSION['user_session']);
-    print_r($_POST['title']);
-    print_r($_POST['description']);
-    print_r($_POST['priority']);
-    print_r($_POST['deadline']);
+    echo ('<p>successfully added note</p>');
     add_item();
   }
 ?>
 
 <body>
 
-<?php print_r($_SESSION) ?>
 
 <form name="add_item_form" action="edit.php" method="post">
   <input type="text" name="title" id="title" value="Title"><br>

@@ -76,7 +76,7 @@ footer {
 }
 
 h2 {
-  padding-top: 8%;
+  padding-top: 4%;
 }
 
 div {
@@ -91,3 +91,11 @@ form {
 label {
   margin-left: 25%;
 }
+ img {
+   margin-top: 2%;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   width: 40%;
+   height: auto;
+ }

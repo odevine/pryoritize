@@ -17,7 +17,22 @@
 
   $auth_user->closeConnection();
 ?>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="style.css" type="text/css"  />
+		<link rel="stylesheet" href="css/material-kit.css">
+		<link rel="stylesheet" href="css/material-kit.css.map">
+		<link rel="stylesheet" href="css/material-kit.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="./assets/css/material-kit.css?v=2.0.2">
 
+		<img src="images/pryoritize.png">
+</head>
 <body>
   <?php 
   $items = get_user_items($_SESSION['user_session']);

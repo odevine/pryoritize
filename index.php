@@ -34,6 +34,8 @@ if(isset($_POST['btn-login']))
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
         <link rel="stylesheet" href="./assets/css/material-kit.css?v=2.0.2">
+
+        <img src="images/pryoritize.png">
     </head>
 <body>
 
@@ -65,7 +67,9 @@ if(isset($_POST['btn-login']))
             <button class="btn btn-info" type="submit" name="btn-login">Log in</button>
         </div>  
       	<br />
-            <label><a href="sign-up.php">Sign up</a></label>
+            <form>
+                <input type="button" class="btn btn-primary" value="Sign up" onclick="window.location.href='sign-up.php'" />
+            </form> 
       </form>
 
 </body>

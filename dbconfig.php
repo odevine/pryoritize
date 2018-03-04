@@ -9,7 +9,6 @@ class Database
      
     public function dbConnection()
 	{
-     
 	    $this->conn = null;    
         try
 		{

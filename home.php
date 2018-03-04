@@ -1,6 +1,7 @@
 <?php
 	require_once("session.php");
   require_once("class.user.php");
+  require("functions.php");
   
   $auth_user = new USER();
   $user_id = $_SESSION['user_session'];
@@ -12,16 +13,18 @@
 
   $title = 'pryoritize';
   $description = 'please just work';
-  $cssPath = '../css/index.css'
+  $cssPath = '../css/index.css';
 
+  $auth_user->closeConnection();
 ?>
 
 
 <body>
 
 hi there
-<?php print_r($_SESSION) ?>
+<?php print_r( get_user_items(1) ) ?>
 <a href="logout.php?logout=true">log out</a>
+
 
 </body>
 </html>

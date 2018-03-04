@@ -12,7 +12,11 @@ class USER
 		$database = new Database();
 		$db = $database->dbConnection();
 		$this->conn = $db;
-    }
+		}
+		
+	public function closeConnection() {
+		$this->conn = null;
+	}
 	
 	public function runQuery($sql)
 	{
@@ -20,8 +24,7 @@ class USER
 		return $stmt;
 	}
 	
-	public function register($uname,$umail,$upass)
-	{
+	public function register($uname,$umail,$upass){
 		try
 		{
 			$new_password = password_hash($upass, PASSWORD_DEFAULT);

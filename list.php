@@ -16,6 +16,7 @@
   $cssPath = '../css/index.css';
 
   $auth_user->closeConnection();
+  require("includes/header.php");
 ?>
 
   <body>

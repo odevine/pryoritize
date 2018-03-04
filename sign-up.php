@@ -2,6 +2,7 @@
 session_start();
 require_once('class.user.php');
 $user = new USER();
+$cssPath = "css/index.css";
 
 if($user->is_loggedin()!="")
 {
@@ -56,17 +57,12 @@ if(isset($_POST['btn-signup']))
 		}
 	}	
 }
-
+$description="";    
+require("includes/header.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Coding Cage : Sign up</title>
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-<link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-<link rel="stylesheet" href="style.css" type="text/css"  />
-</head>
+	
 <body>
 
 <div class="signin-form">
@@ -91,7 +87,7 @@ if(isset($_POST['btn-signup']))
 			{
 				 ?>
                  <div class="alert alert-info">
-                      <i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully registered <a href='index.php'>login</a> here
+                      <i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully registered
                  </div>
                  <?php
 			}
@@ -107,12 +103,14 @@ if(isset($_POST['btn-signup']))
             </div>
             <div class="clearfix"></div><hr />
             <div class="form-group">
-            	<button type="submit" class="btn btn-primary" name="btn-signup">
+            	<button type="submit" class="btn btn-info" name="btn-signup">
                 	<i class="glyphicon glyphicon-open-file"></i>&nbsp;SIGN UP
                 </button>
             </div>
             <br />
-            <label>have an account ! <a href="index.php">Sign In</a></label>
+            <form>
+                <input type="button" class="btn btn-primary" value="Sign in" onclick="window.location.href='index.php'" />
+            </form> 
         </form>
        </div>
 </div>

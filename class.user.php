@@ -42,7 +42,9 @@ class USER
 			echo $e->getMessage();
 		}				
 	}
-	
+	public function closeConnection() {
+        $this->conn = null;
+    }
 	
 	public function doLogin($uname,$umail,$upass)
 	{

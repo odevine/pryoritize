@@ -2,7 +2,7 @@
   $cssPath = "css/index.css";
 	require_once("session.php");
   require_once("class.user.php");
-  
+  require("functions.php");
   $auth_user = new USER();
   $user_id = $_SESSION['user_session'];
 
@@ -13,16 +13,13 @@
 
   $title = 'pryoritize';
   $description = 'please just work';
-  $cssPath = '../css/index.css'
+  $cssPath = '../css/index.css';
 
-<<<<<<< HEAD
-=======
   $auth_user->closeConnection();
 
   if(isset($_POST['submit'])) {
     removeTop($_SESSION['pq']); //ayy
   }
->>>>>>> 65a40b0cdb2dd58d243776a9672242024572df47
 ?>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -43,7 +40,6 @@
 <?php 
   $items = get_user_items($_SESSION['user_session']);
   $pq = new SplPriorityQueue();
-  print_r($items);
   foreach($items as $item) { 
     $realPriority = calculatePriority($item['priority'], $item['created_at'], $item['deadline']);
     $pq->insert($item['title'].' - '.$realPriority, $realPriority);    
@@ -58,15 +54,9 @@
 
 
 
-<<<<<<< HEAD
-hi there
-<?php print_r($_SESSION) ?>
-<a href="logout.php?logout=true">log out</a>
-=======
 <form action="logout.php?logout=true" method="post" enctype="multipart/form-data">
   <button type="submit">Log Out</button>
 </form>
->>>>>>> 65a40b0cdb2dd58d243776a9672242024572df47
 
 </body>
 </html>

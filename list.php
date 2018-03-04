@@ -19,21 +19,22 @@
   require("includes/header.php");
 ?>
 
-<body>
-  <?php 
-  $items = get_user_items($_SESSION['user_session']);
-  $pq = new SplPriorityQueue();
-  foreach($items as $item) { 
-    $pq->insert($item['title'].' - '.$item['priority'], $item['priority']);    
-  }
-  // Iterate the queue (by priority) and display each element
-  while ($pq->valid()) {
-  print_r($pq->current());
-  echo '<br>';
-  echo PHP_EOL;
-  $pq->next();
-}
-  ?>
+  <body>
+    <?php 
+    $items = get_user_items($_SESSION['user_session']);
+    $pq = new SplPriorityQueue();
+    foreach($items as $item) { 
+      $realPriority = calculatePriority($item['priority'], $item['created_at'], $item['deadline']);
+      $pq->insert($item['title'].' - '.$realPriority, $realPriority);    
+    }
+    $_SESSION['pq'] = $pq;
+    // Iterate the queue (by priority) and display each element
+    while ($pq->valid()) {
+      print_r($pq->current());
+      echo '<br>';
+      echo PHP_EOL;
+      $pq->next();
+    } ?>
 
-</body>
+  </body>
 </html>

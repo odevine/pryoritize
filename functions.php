@@ -16,19 +16,22 @@
     return $result;
   }
 
-  function add_item($user_id, $title, $description, $priority, $deadline) {
+  function add_item() {
     $d1 = new Datetime();
     global $db;
-    $query = "INSERT INTO `list_item` (`item_id`, `user_id`, `title`, `description`, `priority`, `deadline`, `created_at`) 
-              VALUES (NULL, ':user_id', ':title', ':description', ':priority', ':deadline', ':created_at')";
-    $stmt = $db->prepare($query);
-    $stmt->bindValue(':user_id', $user_id);
-    $stmt->bindValue(':title', $title);
-    $stmt->bindValue(':description', $description);
-    $stmt->bindValue(':priority', $priority);
-    $stmt->bindValue(':deadline', $deadline);
-    $stmt->bindValue(':created_at', $d1->format('U'));
-    $stmt->execute();
+    
+    $data = [
+      'user_id' => $_SESSION['user_session'],
+      'title' => $_POST['title'],
+      'description' => $_POST['description'],
+      'priority' => $_POST['priority'],
+      'deadline' => $_POST['deadline'],
+      'created_at' => $d1->format('U')
+    ];
+    $query = "INSERT INTO list_item (item_id, user_id, title, description, priority, deadline, created_at) 
+              VALUES (NULL, :user_id, :title, :description, :priority, :deadline, :created_at)";
+    $stmt= $db->prepare($query);
+    $stmt->execute($data);
   }
 
 ?>

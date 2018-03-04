@@ -12,7 +12,7 @@
   $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
   $title = 'pryoritize';
-  $description = 'please just work';
+  $description = 'dashboard';
   $cssPath = '../css/index.css';
 
   $auth_user->closeConnection();
@@ -22,7 +22,7 @@
 <body>
 
 hi there
-<?php print_r( get_user_items(1) ) ?>
+<?php print_r( get_user_items($_SESSION['user_session']) ) ?>
 <a href="logout.php?logout=true">log out</a>
 
 

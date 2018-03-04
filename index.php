@@ -1,4 +1,5 @@
 <?php
+$cssPath = "css/index.css";
 session_start();
 require_once("class.user.php");
 $login = new USER();
@@ -24,7 +25,16 @@ if(isset($_POST['btn-login']))
 	}	
 }
 ?>
+    <head>
+        <link rel="stylesheet" href="css/material-kit.css">
+        <link rel="stylesheet" href="css/material-kit.css.map">
+        <link rel="stylesheet" href="css/material-kit.min.css">
+        <link rel="stylesheet" href="css/index.css">
 
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="./assets/css/material-kit.css?v=2.0.2">
+    </head>
 <body>
 
        <form method="post" id="login-form">
@@ -42,17 +52,17 @@ if(isset($_POST['btn-login']))
 		?>
         </div>
         
-        <div>
-        <input type="text" name="txt_uname_email" placeholder="Username or E-mail" required />
+        <div class="form-group has-default bmd-form-group">
+        <input class="form-control" type="text" name="txt_uname_email" placeholder="Username or E-mail" required />
         <span id="check-e"></span>
         </div>
         
-        <div>
-        <input type="password" name="txt_password" placeholder="Your Password" />
+        <div class="form-group has-default bmd-form-group">
+        <input class="form-control" type="password" name="txt_password" placeholder="Your Password" />
         </div>
         
         <div>
-            <button type="submit" name="btn-login">Log in</button>
+            <button class="btn btn-info" type="submit" name="btn-login">Log in</button>
         </div>  
       	<br />
             <label><a href="sign-up.php">Sign up</a></label>

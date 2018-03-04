@@ -1,7 +1,7 @@
 <?php
+  $cssPath = "css/index.css";
 	require_once("session.php");
   require_once("class.user.php");
-  require("functions.php");
   
   $auth_user = new USER();
   $user_id = $_SESSION['user_session'];
@@ -12,19 +12,17 @@
   $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
   $title = 'pryoritize';
-  $description = 'dashboard';
-  $cssPath = '../css/index.css';
+  $description = 'please just work';
+  $cssPath = '../css/index.css'
 
-  $auth_user->closeConnection();
 ?>
 
 
 <body>
 
 hi there
-<?php print_r( get_user_items($_SESSION['user_session']) ) ?>
+<?php print_r($_SESSION) ?>
 <a href="logout.php?logout=true">log out</a>
-
 
 </body>
 </html>

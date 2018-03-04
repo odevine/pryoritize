@@ -1,5 +1,5 @@
 html {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
   max-width: 1400px;
   margin: 0 auto
 }
@@ -58,4 +58,36 @@ footer {
   background-color: lightskyblue;
   font-weight: bolder;
   text-align: center;
+}
+
+.email_input {
+  width: 400px;
+  height: 25px;
+}
+
+.pass_input {
+  width: 400px;
+  height: 25px;
+}
+
+.login_button {
+  width: 100px;
+  height: 40px;
+}
+
+h2 {
+  padding-top: 8%;
+}
+
+div {
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+form {
+  text-align: center;
+}
+
+label {
+  margin-left: 25%;
 }

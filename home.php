@@ -24,14 +24,13 @@
 
 
 <body>
-
-hi there
 <?php 
   $items = get_user_items($_SESSION['user_session']);
   $pq = new SplPriorityQueue();
+  print_r($items);
   foreach($items as $item) { 
-      // change this to however you want it to display
-    $pq->insert($item['title'].' - '.$item['priority'], $item['priority']);    
+    $realPriority = calculatePriority($item['priority'], $item['created_at'], $item['deadline']);
+    $pq->insert($item['title'].' - '.$realPriority, $realPriority);    
   }
   $_SESSION['pq'] = $pq; 
   echo '<div>'.$pq->current().'</div>';

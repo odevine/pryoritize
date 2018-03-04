@@ -27,20 +27,26 @@
       case 'medPriority':
         $priority = 50;
         break;
-      case 'medPriority':
+      case 'highPriority':
         $priority = 75;
         break;
       default:
         $priority = 0;
         break;
-  }
+    }
+
+    if ($_POST['deadlineOption'] == 'none') {
+      $deadline = null;
+    } else {
+      $deadline = strtotime($_POST['deadline_date'].' '.$_POST['deadline_time']);
+    }
     
     $data = [
       'user_id' => $_SESSION['user_session'],
       'title' => $_POST['title'],
       'description' => $_POST['description'],
       'priority' => $priority,
-      'deadline' => $_POST['deadline'],
+      'deadline' => $deadline,
       'created_at' => $d1->format('U')
     ];
     $query = "INSERT INTO list_item (item_id, user_id, title, description, priority, deadline, created_at) 
@@ -49,13 +55,21 @@
     $stmt->execute($data);
   }
 
+  function calculatePriority($priority, $created_at, $deadline) {
+    if($deadline == null) {
+      return $priority;
+    } else {
+      $time_until_completion = $deadline - $created_at;
+      return $priority * (1 - ($time_until_completion / $created_at)) * (100 - $priority);
+    }
+  }
+
   function removeTop($pq) {
     if($pq->isEmpty()) {
       return;
     } else {
       $pq->extract();
     }
-    
   }
 
 ?>

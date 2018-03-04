@@ -23,12 +23,31 @@
   }
 ?>
 
+<script>
+  var date = new Date();
+
+  var day = date.getDate();
+  var month = date.getMonth() + 1;
+  var year = date.getFullYear();
+
+  if (month < 10) month = "0" + month;
+  if (day < 10) day = "0" + day;
+
+  var today = year + "-" + month + "-" + day;       
+  document.getElementById("theDate").value = today;
+</script>
+
 <body>
 
 
 <form name="add_item_form" action="edit.php" method="post">
-  <input type="text" name="title" id="title" value="Title"><br>
-  <input type="text" name="description" id="title" value="Description"><br>
+  <p>Title</p>
+  <input type="text" name="title" id="title"><br>
+
+  <p>Description</p>
+  <input type="text" name="description" id="title"><br>
+  
+  <p>Priority</p>
   <div>
     <input type="radio" id="noPriority" name="priority" value="noPriority" checked>
     <label for="noPriority">None</label>
@@ -42,7 +61,19 @@
     <input type="radio" id="highPriority" name="priority" value="highPriority">
     <label for="highPriority">High</label>
   </div>
-  <input type="number" name="deadline" id="deadline" value="99999999"><br>
+
+  <p>Deadline</p>
+  <div>
+    <input type="radio" id="noDeadline" name="deadlineOption" value="none" checked>
+    <label for="noDeadline">No Deadline</label>
+
+    <input type="radio" id="deadline" name="deadlineOption" value="yes">
+    <label for="noPriority">
+      <input type="date" name="deadline_date" id="deadline_date" value="<?php echo date("Y-m-d"); ?>">
+      <input type="time" name="deadline_time" id="deadline_time" value="12:00"><br>
+    </label>
+  </div>
+
   <button type="submit" name="submit">Add Item</button>
 </form>
 

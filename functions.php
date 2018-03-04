@@ -19,12 +19,27 @@
   function add_item() {
     $d1 = new Datetime();
     global $db;
+
+    switch ($_POST['priority']) {
+      case 'lowPriority':
+        $priority = 25;
+        break;
+      case 'medPriority':
+        $priority = 50;
+        break;
+      case 'medPriority':
+        $priority = 75;
+        break;
+      default:
+        $priority = 0;
+        break;
+  }
     
     $data = [
       'user_id' => $_SESSION['user_session'],
       'title' => $_POST['title'],
       'description' => $_POST['description'],
-      'priority' => $_POST['priority'],
+      'priority' => $priority,
       'deadline' => $_POST['deadline'],
       'created_at' => $d1->format('U')
     ];
@@ -34,9 +49,13 @@
     $stmt->execute($data);
   }
 
-  function getItemHTML($item) {
-    $title = $item['title'];
-    echo '<h2><?=$title?></h2>';
+  function removeTop($pq) {
+    if($pq->isEmpty()) {
+      return;
+    } else {
+      $pq->extract();
+    }
+    
   }
 
 ?>

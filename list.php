@@ -18,21 +18,22 @@
   $auth_user->closeConnection();
 ?>
 
-<body>
-  <?php 
-  $items = get_user_items($_SESSION['user_session']);
-  $pq = new SplPriorityQueue();
-  foreach($items as $item) { 
-    $pq->insert($item['title'].' - '.$item['priority'], $item['priority']);    
-  }
-  // Iterate the queue (by priority) and display each element
-  while ($pq->valid()) {
-  print_r($pq->current());
-  echo '<br>';
-  echo PHP_EOL;
-  $pq->next();
-}
-  ?>
+  <body>
+    <?php 
+    $items = get_user_items($_SESSION['user_session']);
+    $pq = new SplPriorityQueue();
+    foreach($items as $item) { 
+      // change this to however you want it to display
+      $pq->insert($item['title'].' - '.$item['priority'], $item['priority']);    
+    }
+    $_SESSION['pq'] = $pq;
+    // Iterate the queue (by priority) and display each element
+    while ($pq->valid()) {
+      print_r($pq->current());
+      echo '<br>';
+      echo PHP_EOL;
+      $pq->next();
+    } ?>
 
-</body>
+  </body>
 </html>

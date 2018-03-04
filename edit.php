@@ -29,7 +29,19 @@
 <form name="add_item_form" action="edit.php" method="post">
   <input type="text" name="title" id="title" value="Title"><br>
   <input type="text" name="description" id="title" value="Description"><br>
-  <input type="number" name="priority" id="priority" value="0"><br>
+  <div>
+    <input type="radio" id="noPriority" name="priority" value="noPriority" checked>
+    <label for="noPriority">None</label>
+
+    <input type="radio" id="lowPriority" name="priority" value="lowPriority">
+    <label for="lowPriority">Low</label>
+
+    <input type="radio" id="medPriority" name="priority" value="medPriority">
+    <label for="medPriority">Med</label>
+
+    <input type="radio" id="highPriority" name="priority" value="highPriority">
+    <label for="highPriority">High</label>
+  </div>
   <input type="number" name="deadline" id="deadline" value="99999999"><br>
   <button type="submit" name="submit">Add Item</button>
 </form>

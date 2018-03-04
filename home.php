@@ -16,14 +16,36 @@
   $cssPath = '../css/index.css';
 
   $auth_user->closeConnection();
+
+  if(isset($_POST['submit'])) {
+    removeTop($_SESSION['pq']); //ayy
+  }
 ?>
 
 
 <body>
 
 hi there
-<?php print_r( get_user_items($_SESSION['user_session']) ) ?>
-<a href="logout.php?logout=true">log out</a>
+<?php 
+  $items = get_user_items($_SESSION['user_session']);
+  $pq = new SplPriorityQueue();
+  foreach($items as $item) { 
+      // change this to however you want it to display
+    $pq->insert($item['title'].' - '.$item['priority'], $item['priority']);    
+  }
+  $_SESSION['pq'] = $pq; 
+  echo '<div>'.$pq->current().'</div>';
+?>
+
+<form name="add_item_form" action="home.php" method="post">
+  <button type="submit" name="submit">Done</button>
+</form>
+
+
+
+<form action="logout.php?logout=true" method="post" enctype="multipart/form-data">
+  <button type="submit">Log Out</button>
+</form>
 
 
 </body>

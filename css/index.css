@@ -92,10 +92,63 @@ label {
   margin-left: 25%;
 }
  img {
-   margin-top: 2%;
-   display: block;
-   margin-left: auto;
-   margin-right: auto;
-   width: 40%;
-   height: auto;
+  margin-top: 2%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  height: auto; 
  }
+
+.centerme {
+  margin-top: 3%;
+  text-align: center;
+  font-size: 150%;
+}
+
+a {
+  margin-right: 1%;
+  margin-left: 1%;
+  font-weight: bold;
+  color: black;
+}
+
+a:link {
+  text-decoration-color: none;
+  color: black;
+}
+
+a:visited {
+  text-decoration-color: none;
+  color: black;
+}
+
+.list {
+  text-align: center;
+  margin-top: 4%;
+  font-weight: 600;
+}
+
+.leftali {
+  text-align: left;
+  margin-left: 42%;
+}
+
+.nav {
+  text-align: center;
+  margin-left: 43%;
+  margin-bottom: 2%;
+}
+
+#noPriority {
+  color: black;
+}
+#lowPriority {
+  
+}
+#medPriority {
+  
+}
+#highPriority {
+  
+}

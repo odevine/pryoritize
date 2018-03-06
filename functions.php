@@ -1,19 +1,21 @@
 <?php
   require_once('dbconfig.php');
 
-  function get_user_id($username) {
-    $query = "SELECT id FROM users 
-              WHERE username = :username";
-    $statement = $db->prepare($query);
-    $statement->bindValue(':username', $username);
-    $statement->execute();
-    $result = $statement->fetch();
-    $statement->closeCursor();
+  $database = new Database();
+  $db = $database->dbConnection();
+
+  function get_user_items($user_id) {
+    global $db;
+    $query = "SELECT * FROM list_item 
+              WHERE user_id = :user_id";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(':user_id', $user_id);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
     return $result;
   }
 
-<<<<<<< HEAD
-=======
   function add_item() {
     $d1 = new Datetime();
     global $db;
@@ -54,11 +56,14 @@
   }
 
   function calculatePriority($priority, $created_at, $deadline) {
+    $d2 = new Datetime();
     if($deadline == null) {
       return $priority;
     } else {
-      $time_until_completion = $deadline - $created_at;
-      return $priority * (1 - ($time_until_completion / $created_at)) * (100 - $priority);
+      (int)$current = $d2->format('U');
+      (int)$time_until_completion = $deadline - $current;  //time until deadline when checked
+      (int)$maxTime = $created_at - $deadline;   //time until deadline when task created
+      return $priority + ((1 - ($time_until_completion / $maxTime)) * (100 - $priority));
     }
   }
 
@@ -70,5 +75,25 @@
     }
   }
 
->>>>>>> 65a40b0cdb2dd58d243776a9672242024572df47
+  function remove_item($item_id) {
+    global $db;
+    echo $item_id;
+    $query = "DELETE FROM list_item WHERE item_id=:item_id";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(':item_id', $item_id);
+    $stmt->execute();
+    $stmt->closeCursor();
+  }
+
+  function access_item($item_id) {
+    global $db;
+    $query = "SELECT title FROM list_item WHERE item_id=:item_id";
+    $stmt = $db->prepare($query);
+    $stmt->bindValue(':item_id', $item_id);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $result;
+  }
+
 ?>

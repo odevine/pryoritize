@@ -3,12 +3,10 @@ session_start();
 require_once('class.user.php');
 $user = new USER();
 $cssPath = "css/index.css";
-
 if($user->is_loggedin()!="")
 {
 	$user->redirect('home.php');
 }
-
 if(isset($_POST['btn-signup']))
 {
 	$uname = strip_tags($_POST['txt_uname']);

@@ -13,19 +13,24 @@
 
   $title = 'pryoritize';
   $description = 'view notes';
-  $cssPath = '../css/index.css';
+  $cssPath = 'css/index.css';
 
   $auth_user->closeConnection();
   require("includes/header.php");
 ?>
-
+<div class="nav">
+<a href="home.php">Home |</a>
+<a href="edit.php">Add Items |</a>
+<a href="list.php">View List</a>
+</div>  
   <body>
+  <div class="list">
     <?php 
     $items = get_user_items($_SESSION['user_session']);
     $pq = new SplPriorityQueue();
     foreach($items as $item) { 
       $realPriority = calculatePriority($item['priority'], $item['created_at'], $item['deadline']);
-      $pq->insert($item['title'].' - '.$realPriority, $realPriority);    
+      $pq->insert($item['title'].' - '.$item['description'], $realPriority);    
     }
     $_SESSION['pq'] = $pq;
     // Iterate the queue (by priority) and display each element
@@ -35,6 +40,6 @@
       echo PHP_EOL;
       $pq->next();
     } ?>
-
+    </div>
   </body>
 </html>
